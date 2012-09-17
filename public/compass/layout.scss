@@ -26,17 +26,15 @@ hr {
   box-sizing: border-box;
 }
 
+
 ///* -------------------------------------------------------- */
-///* GENERAL MIXINS
+///* GENERAL LAYOUT MIXINS
 ///* -------------------------------------------------------- */
 @mixin no-bullet {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0; }
 @mixin float($direction) { float: $direction; }
-@mixin horizontal-list-container {
-  @include reset-box-model;
-  @include clearfix; }
 @mixin horizontal-list-item($padding: 0px, $direction: left) {
   @include no-bullet;
   white-space: nowrap;
@@ -52,7 +50,6 @@ hr {
     &.last {
       padding-#{opposite-position($direction)}: 0; } } }
 @mixin horizontal-list($padding: 0px, $direction: left) {
-  @include horizontal-list-container;
   li {
     @include horizontal-list-item($padding, $direction); } 
 }
@@ -83,13 +80,13 @@ body {
 }
 
 /* -------------------------------------------------------- HEADER */
-#header {
+body > header {
   clear: both;
   width: 100%;
   margin: 0 auto; 
 }
 /* -------------------------------------------------------- MAIN CONTENT */
-.wrapper {
+body > section {
   clear: both;
   width: 100%;
   margin: 0 auto;
@@ -97,7 +94,7 @@ body {
 
 /* -------------------------------------------------------- ARTICLES */
 /* -------------------------------------------------------- FOOTER */ 
-#footer {
+body > footer {
   clear: both;
   width: 100%;
   margin: 0 auto; 
@@ -123,12 +120,18 @@ $grid-gutter-width: 20px;
 $grid-total-width: 320px; 
 $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
 
-@mixin gridcol($n, $colsgap:0, $offset:0) {
+@mixin gridcol($n, $colsgap:0, $offset:0, $float: left) {
   $gap : $colsgap * ($grid-gutter-width + $grid-col-width);
   display: inline-block;
-  float: left;
-  margin-left: ( $grid-gutter-width / 2 ) + $offset + $gap;
-  margin-right: ( $grid-gutter-width / 2 );
+  float: $float;
+  @if $float == "right" {
+    margin-right: ( $grid-gutter-width / 2 ) + $offset + $gap;
+    margin-left: ( $grid-gutter-width / 2 );
+  }
+  @else {
+    margin-left: ( $grid-gutter-width / 2 ) + $offset + $gap;
+    margin-right: ( $grid-gutter-width / 2 );
+  }
   width: ( ($grid-gutter-width + $grid-col-width) * $n ) - $grid-gutter-width;
 }
 
@@ -141,9 +144,9 @@ $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
     
 
   body { width: $grid-total-width; }
-  #header { width: $grid-total-width; }
-  .wrapper { @include gridcol($grid-columns); }
-  #footer { width: $grid-total-width; }
+  body > header { width: $grid-total-width; }
+  body > section { @include gridcol($grid-columns); }
+  body > footer { width: $grid-total-width; }
 }
 
 /* -------------------------------------------------------- MQ: MOBILE-LANDSCAPE */
@@ -155,9 +158,9 @@ $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
     
 
   body { width: $grid-total-width; }
-  #header { width: $grid-total-width; }
-  .wrapper { @include gridcol($grid-columns); }
-  #footer { width: $grid-total-width; }
+  body > header { width: $grid-total-width; }
+  body > section { @include gridcol($grid-columns); }
+  body > footer { width: $grid-total-width; }
 }
 
 /* -------------------------------------------------------- MQ: TABLET */
@@ -169,9 +172,9 @@ $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
     
 
   body { width: $grid-total-width; }
-  #header { width: $grid-total-width; }
-  .wrapper { @include gridcol($grid-columns); }
-  #footer { width: $grid-total-width; }
+  body > header { width: $grid-total-width; }
+  body > section { @include gridcol($grid-columns); }
+  body > footer { width: $grid-total-width; }
 }
 
 /* -------------------------------------------------------- MQ: TABLET-LANDSCAPE */
@@ -183,9 +186,9 @@ $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
     
 
   body { width: $grid-total-width; }
-  #header { width: $grid-total-width; }
-  .wrapper { @include gridcol($grid-columns); }
-  #footer { width: $grid-total-width; }
+  body > header { width: $grid-total-width; }
+  body > section { @include gridcol($grid-columns); }
+  body > footer { width: $grid-total-width; }
 }
 
 /* -------------------------------------------------------- MQ: DESKTOP */
@@ -197,8 +200,8 @@ $grid-col-width: ( $grid-total-width / $grid-columns) - $grid-gutter-width;
     
   
   body { width: $grid-total-width; }
-  #header { width: $grid-total-width; }
-  .wrapper { @include gridcol($grid-columns); }
-  #footer { width: $grid-total-width; }
+  body > header { width: $grid-total-width; }
+  body > section { @include gridcol($grid-columns); }
+  body > footer { width: $grid-total-width; }
 }
 

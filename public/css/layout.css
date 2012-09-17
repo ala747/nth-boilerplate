@@ -78,20 +78,20 @@ body {
   margin: 0 auto; }
 
 /* -------------------------------------------------------- HEADER */
-#header {
+body > header {
   clear: both;
   width: 100%;
   margin: 0 auto; }
 
 /* -------------------------------------------------------- MAIN CONTENT */
-.wrapper {
+body > section {
   clear: both;
   width: 100%;
   margin: 0 auto; }
 
 /* -------------------------------------------------------- ARTICLES */
 /* -------------------------------------------------------- FOOTER */
-#footer {
+body > footer {
   clear: both;
   width: 100%;
   margin: 0 auto; }
@@ -104,83 +104,83 @@ body {
   body {
     width: 320px; }
 
-  #header {
+  body > header {
     width: 320px; }
 
-  .wrapper {
+  body > section {
     display: inline-block;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
     width: 300px; }
 
-  #footer {
+  body > footer {
     width: 320px; } }
 /* -------------------------------------------------------- MQ: MOBILE-LANDSCAPE */
 @media screen and (min-width: 480px) and (max-width: 639px) {
   body {
     width: 480px; }
 
-  #header {
+  body > header {
     width: 480px; }
 
-  .wrapper {
+  body > section {
     display: inline-block;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
     width: 460px; }
 
-  #footer {
+  body > footer {
     width: 480px; } }
 /* -------------------------------------------------------- MQ: TABLET */
 @media screen and (min-width: 640px) and (max-width: 799px) {
   body {
     width: 640px; }
 
-  #header {
+  body > header {
     width: 640px; }
 
-  .wrapper {
+  body > section {
     display: inline-block;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
     width: 620px; }
 
-  #footer {
+  body > footer {
     width: 640px; } }
 /* -------------------------------------------------------- MQ: TABLET-LANDSCAPE */
 @media screen and (min-width: 800px) and (max-width: 959px) {
   body {
     width: 800px; }
 
-  #header {
+  body > header {
     width: 800px; }
 
-  .wrapper {
+  body > section {
     display: inline-block;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
     width: 780px; }
 
-  #footer {
+  body > footer {
     width: 800px; } }
 /* -------------------------------------------------------- MQ: DESKTOP */
 @media screen and (min-width: 960px) {
   body {
     width: 960px; }
 
-  #header {
+  body > header {
     width: 960px; }
 
-  .wrapper {
+  body > section {
     display: inline-block;
     float: left;
     margin-left: 10px;
     margin-right: 10px;
     width: 940px; }
 
-  #footer {
+  body > footer {
     width: 960px; } }

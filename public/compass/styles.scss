@@ -22,17 +22,17 @@
 }
 
 /* -------------------------------------------------------- HEADER */
-.debug #header {
+.debug body > header {
   background-color: rgba(220, 0, 220, 0.2); 
 }
 /* -------------------------------------------------------- MAIN CONTENT */
-.debug .wrapper {
+.debug body > section {
   background-color: rgba(0, 220, 220, 0.2); 
 }
 
 /* -------------------------------------------------------- ARTICLES */
 /* -------------------------------------------------------- FOOTER */ 
-.debug #footer {
+.debug body > footer {
   background-color: rgba(220, 220, 0, 0.2); 
 }
 
