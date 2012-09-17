@@ -28,17 +28,24 @@ Did I hear semantic grid system? It's pretty easy, instead of adding .col12 or .
 .box { @include gridcol(4); } /* spans 4 columns */
 .menu { @include gridcol(4, 1); } /* spans 4 columns, leaving 1 column gap on the left */
 .ul { @include gridcol(3, 0, 20px); } /* spans 3 columns, leaving 20px gap on the left */
+.social { @include gridcol(4, 0, -10px, right); } /* spans 4 columns and forces to float right w/o the margin */
 ```
 This way my markup will be semantic since I'm not adding size-meaning to elements that will change measures with media queries. The mixin applied to `@include gridcol(4)` is:
 ```
-@mixin gridcol($n, $colsgap:0, $offset:0) {
+@mixin gridcol($n, $colsgap:0, $offset:0, $float: left) {
   $gap : $colsgap * ($grid-gutter-width + $grid-col-width);
   display: inline-block;
-  float: left;
-  margin-left: ( $grid-gutter-width / 2 ) + $offset + $gap;
-  margin-right: ( $grid-gutter-width / 2 );
+  float: $float;
+  @if $float == "right" {
+    margin-right: ( $grid-gutter-width / 2 ) + $offset + $gap;
+    margin-left: ( $grid-gutter-width / 2 );
+  }
+  @else {
+    margin-left: ( $grid-gutter-width / 2 ) + $offset + $gap;
+    margin-right: ( $grid-gutter-width / 2 );
+  }
   width: ( ($grid-gutter-width + $grid-col-width) * $n ) - $grid-gutter-width;
-} 
+}
 ```
 ### Goodies
 - There's a `debug` class applied to html element to show specific background colors that are ment to test boxes width/height.
